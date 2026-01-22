@@ -1,0 +1,68 @@
+<odoo>
+    <record id="view_alumno_tree" model="ir.ui.view">
+        <field name="name">alumno.tree</field>
+        <field name="model">fpinformatica.alumno</field>
+        <field name="arch" type="xml">
+            <tree decoration-danger="grade &lt; 5" decoration-success="grade &gt;= 5">
+                <field name="name"/>
+                <field name="surname"/>
+                <field name="cycle"/>
+                <field name="academic_year"/>
+                <field name="grade_text"/>
+                <field name="grade" optional="hide"/>
+                <field name="company_id"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_alumno_form" model="ir.ui.view">
+        <field name="name">alumno.form</field>
+        <field name="model">fpinformatica.alumno</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <div class="oe_title">
+                        <h1>
+                            <field name="name" placeholder="Nombre"/>
+                            <field name="surname" placeholder="Apellidos"/>
+                        </h1>
+                    </div>
+                    <group>
+                        <group string="Datos Personales">
+                            <field name="dni"/>
+                            <field name="birth_date"/>
+                            <field name="email"/>
+                            <field name="phone"/>
+                        </group>
+                        <group string="Datos Académicos">
+                            <field name="cycle"/>
+                            <field name="academic_year"/>
+                            <field name="period"/>
+                            <field name="grade"/>
+                            <field name="company_id"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id="view_alumno_search" model="ir.ui.view">
+        <field name="name">alumno.search</field>
+        <field name="model">fpinformatica.alumno</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="surname"/>
+                <field name="company_id"/>
+                <field name="academic_year"/>
+                <field name="period"/>
+
+                <filter string="Nota mayor que 8" name="high_grade" domain="[('grade', '>', 8)]"/>
+
+                <group expand="0" string="Agrupar por">
+                    <filter string="Empresa" name="group_company" context="{'group_by': 'company_id'}"/>
+                    <filter string="Curso" name="group_year" context="{'group_by': 'academic_year'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+</odoo>
