@@ -1,0 +1,54 @@
+<odoo>
+    <record id="report_empresa_fct" model="ir.actions.report">
+        <field name="name">Informe de Alumnos por Empresa</field>
+        <field name="model">fpinformatica.empresa</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">FPINFORAMATICA.report_empresa_template</field>
+        <field name="binding_model_id" ref="model_fpinformatica_empresa"/>
+        <field name="binding_type">report</field>
+    </record>
+
+    <template id="report_empresa_template">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="o">
+                <t t-call="web.external_layout">
+                    <div class="page">
+                        <h2 class="mt-4">Informe de Prácticas: <span t-field="o.name"/></h2>
+                        <div class="row mt-3 mb-3">
+                            <div class="col-6">
+                                <strong>Dirección:</strong> <span t-field="o.address"/><br/>
+                                <strong>CIF:</strong> <span t-field="o.cif"/>
+                            </div>
+                            <div class="col-6">
+                                <strong>Contacto:</strong> <span t-field="o.contact_person"/><br/>
+                                <strong>Teléfono:</strong> <span t-field="o.phone"/>
+                            </div>
+                        </div>
+
+                        <h3>Alumnos Asignados</h3>
+                        <p>Listado agrupado por Curso Académico:</p>
+
+                        <table class="table table-sm table-bordered">
+                            <thead>
+                                <tr style="background-color: #f2f2f2;">
+                                    <th>Curso</th>
+                                    <th>Alumno</th>
+                                    <th>Ciclo</th>
+                                    <th>Teléfono</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr t-foreach="o.student_ids.sorted(key=lambda r: r.academic_year)" t-as="alumno">
+                                    <td><span t-field="alumno.academic_year"/></td>
+                                    <td><span t-field="alumno.name"/> <span t-field="alumno.surname"/></td>
+                                    <td><span t-field="alumno.cycle"/></td>
+                                    <td><span t-field="alumno.phone"/></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+</odoo>
