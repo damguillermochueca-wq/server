@@ -1,0 +1,52 @@
+<odoo>
+    <record id="view_empresa_form" model="ir.ui.view">
+        <field name="name">empresa.form</field>
+        <field name="model">fpinformatica.empresa</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <div class="oe_title">
+                        <h1><field name="name" placeholder="Nombre de la Empresa"/></h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="cif"/>
+                            <field name="contact_person"/>
+                            <field name="phone"/>
+                        </group>
+                        <group>
+                            <field name="email"/>
+                            <field name="address"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Alumnos en Prácticas">
+                            <field name="student_ids">
+                                <tree>
+                                    <field name="name"/>
+                                    <field name="surname"/>
+                                    <field name="academic_year"/>
+                                    <field name="period"/>
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_empresa_tree" model="ir.ui.view">
+        <field name="name">empresa.tree</field>
+        <field name="model">fpinformatica.empresa</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="cif"/>
+                <field name="contact_person"/>
+                <field name="phone"/>
+                <field name="email"/>
+            </tree>
+        </field>
+    </record>
+</odoo>
