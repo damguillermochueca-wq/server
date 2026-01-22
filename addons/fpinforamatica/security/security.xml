@@ -1,0 +1,21 @@
+<odoo>
+    <data>
+        <record model="ir.module.category" id="module_category_fct">
+            <field name="name">Gestión FCT</field>
+            <field name="description">Gestión de alumnos y empresas de FCT</field>
+            <field name="sequence">10</field>
+        </record>
+
+        <record id="group_fct_profesor" model="res.groups">
+            <field name="name">Profesor</field>
+            <field name="category_id" ref="module_category_fct"/>
+        </record>
+
+        <record id="group_fct_tutor" model="res.groups">
+            <field name="name">Tutor</field>
+            <field name="category_id" ref="module_category_fct"/>
+            <field name="implied_ids" eval="[(4, ref('group_fct_profesor'))]"/>
+            <field name="users" eval="[(4, ref('base.user_root')), (4, ref('base.user_admin'))]"/>
+        </record>
+    </data>
+</odoo>

@@ -1,2 +1,5 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-access_fpinforamatica_fpinforamatica,fpinforamatica.fpinforamatica,model_fpinforamatica_fpinforamatica,base.group_user,1,1,1,1
+access_empresa_profesor,empresa.profesor,model_fpinformatica_empresa,group_fct_profesor,1,0,0,0
+access_alumno_profesor,alumno.profesor,model_fpinformatica_alumno,group_fct_profesor,1,1,1,0
+access_empresa_tutor,empresa.tutor,model_fpinformatica_empresa,group_fct_tutor,1,1,1,1
+access_alumno_tutor,alumno.tutor,model_fpinformatica_alumno,group_fct_tutor,1,1,1,1

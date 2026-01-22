@@ -13,7 +13,6 @@ class Alumno(models.Model):
     email = fields.Char(string="Correo electrónico")
     phone = fields.Char(string="Teléfono")
     
-    # Selectores obligatorios según PDF
     cycle = fields.Selection([
         ('DAM', 'DAM'), ('DAW', 'DAW'), ('ASIR', 'ASIR'), 
         ('SMR', 'SMR'), ('DUAL', 'DUAL')
